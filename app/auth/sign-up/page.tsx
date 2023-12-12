@@ -4,9 +4,11 @@ import Link from "next/link";
 
 import Layout from "../../../components/Layout";
 import Form from "../../../components/Form";
-import img from "../../../assets/images/main-dev.webp";
 
 import '../../global.css'
+import Google from "../../../components/Icons/Google";
+import Twitter from "../../../components/Icons/Twitter";
+import Facebook from "../../../components/Icons/Facebook";
 
 const SignUp = () => {
   return (
@@ -26,9 +28,17 @@ const SignUp = () => {
               </Link>
             </p>
             <div className="flex flex-col gap-2.5 mt-10">
-              <button className="rounded-3xl border-[1px] py-3">Continue with Facebook</button>
-              <button className="rounded-3xl border-[1px] py-3">Continue with Google</button>
-              <button className="rounded-3xl border-[1px] py-3">Continue with Twitter</button>
+              <button className="flex justify-center items-center gap-3 rounded-3xl border-[1px] py-3">
+                <Facebook />
+                Continue with Facebook</button>
+              <button className="flex justify-center items-center gap-3 rounded-3xl border-[1px] py-3">
+                <Google />
+                Continue with Google
+              </button>
+              <button className="flex justify-center items-center gap-3 rounded-3xl border-[1px] py-3">
+                <Twitter />
+                Continue with Twitter
+              </button>
             </div>
             <div className="flex items-center py-6 text-divider">
               <hr className="w-full h-px mr-7 border-t-0 bg-divider opacity-100 dark:opacity-50"></hr>
@@ -47,11 +57,10 @@ const SignUp = () => {
           </div>
           <div className="lg:w-2/5 h-full">
             <Image
-              src={img}
+              src='/images/main-dev.webp'
               width={384}
               height={953}
               alt="Main image"
-              placeholder="blur"
               className="w-full h-[200px] lg:h-full lg:max-w-[384px] object-cover"
             />
           </div>
