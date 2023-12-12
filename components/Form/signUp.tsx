@@ -10,7 +10,7 @@ interface IFormInput {
   isSubscribe: boolean
 }
 
-const Form = () => {
+const SignUpFrom = () => {
   const { register, handleSubmit, formState: { errors }, } = useForm<IFormInput>()
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
 
@@ -116,4 +116,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default SignUpFrom;

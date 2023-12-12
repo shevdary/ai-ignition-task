@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import Layout from "../../../components/Layout";
-import Form from "../../../components/Form/signUp";
-
-import '../../global.css'
+import Facebook from "../../../components/Icons/Facebook";
 import Google from "../../../components/Icons/Google";
 import Twitter from "../../../components/Icons/Twitter";
-import Facebook from "../../../components/Icons/Facebook";
+import Layout from "../../../components/Layout";
 
-const SignUp = () => {
+import "../../global.css"
+import SignInForm from "../../../components/Form/signIn";
+
+const SignIn = () => {
   return (
     <Layout>
       <section className="container px-4 py-12 mx-auto flex justify-center">
@@ -20,24 +20,24 @@ const SignUp = () => {
           "lg:pl-6 rounded-small lg:columns-2"}
         >
           <div className="lg:h-full lg:w-3/5 pt-7 px-4 lg:px-0">
-            <h1 className="text-title mb-3.5">Create an account</h1>
+            <h1 className="text-title mb-3.5">Login</h1>
             <p className="text-light-gray">
-              Already have an account? {' '}
-              <Link href="sign-in" className="text-dark underline underline-offset-2">
-                Log in
+              You don't have an account? {' '}
+              <Link href="sign-up" className="text-dark underline underline-offset-2">
+                Sign Up
               </Link>
             </p>
             <div className="flex flex-col gap-2.5 mt-10">
               <button className="flex justify-center items-center gap-3 rounded-3xl border-[1px] py-3">
                 <Facebook />
-                Continue with Facebook</button>
+                Sign in with Facebook</button>
               <button className="flex justify-center items-center gap-3 rounded-3xl border-[1px] py-3">
                 <Google />
-                Continue with Google
+                Sign in with Google
               </button>
               <button className="flex justify-center items-center gap-3 rounded-3xl border-[1px] py-3">
                 <Twitter />
-                Continue with Twitter
+                Sign in with Twitter
               </button>
             </div>
             <div className="flex items-center py-6 text-divider">
@@ -46,11 +46,11 @@ const SignUp = () => {
               <hr className="w-full h-px ml-7 border-t-0 bg-divider opacity-100 dark:opacity-50"></hr>
             </div>
             <div className="h-fit pt-3.5 pb-8">
-              <Form />
+              <SignInForm />
               <p className="text-xs text-center text-light-gray">
-                Already have an account? {' '}
-                <Link href="sign-in" className="text-dark underline underline-offset-2">
-                  Log in
+                You don't have an account? {' '}
+                <Link href="sign-up" className="text-dark underline underline-offset-2">
+                  Sign Up
                 </Link>
               </p>
             </div>
@@ -70,4 +70,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;
