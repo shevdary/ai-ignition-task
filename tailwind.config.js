@@ -1,9 +1,10 @@
 // eslint-disable-next-line no-undef
 module.exports = {
+  important: true,
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     colors: {
@@ -13,7 +14,7 @@ module.exports = {
       'dark': '#4C4D4F',
       'black': '#000000',
       'divider': "rgba(76, 77, 79, 0.50)",
-      "error": '#E11D48',
+      'error': '#E11D48',
       'description': '#A5A6A7',
     },
     fontSize: {
@@ -24,8 +25,8 @@ module.exports = {
       'large': '40px',
     },
     borderRadius: {
-      "small": '14px',
-      "3xl": "1.5rem",
+      'small': '14px',
+      '3xl': "1.5rem",
     },
     extend: {
     },

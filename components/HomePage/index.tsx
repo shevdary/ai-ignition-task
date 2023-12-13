@@ -16,7 +16,7 @@ const HomePage = () => {
         </Grid>
         <Grid item xs={12} md={6}>
           <Card
-            className='w-full h-auto min-h-[360px] flex items-center justify-center rounded-small'
+            className='w-full h-auto min-h-[360px] flex items-center justify-center rounded-small overflow-hidden'
             style={{
               background: 'linear-gradient(109deg, #DBB898 25.3%, #9DC1CE 82.65%)'
             }}

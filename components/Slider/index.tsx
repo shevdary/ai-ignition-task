@@ -22,7 +22,7 @@ const CustomSlider = () => {
     <>
       <Slider ref={slider} {...settings} className="w-full md:px-[62px]">
         {userData.map(user=>(
-          <Box className="flex justify-center text-center">
+          <Box className="flex flex-col justify-center text-center">
             <Avatar src={user.avatar} alt="image" className="h-[62px] w-[62px] mx-auto mb-6"/>
             <Typography className='mb-4'>{user.firstName} {' '} {user.lastName}</Typography>
             <Typography className="text-description px-4 text-sm md:text-[18px]">{user.description}</Typography>
