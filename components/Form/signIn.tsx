@@ -1,6 +1,8 @@
 'use client'
-import React from 'react';
-import { SubmitHandler, useForm } from "react-hook-form";
+import React, { SetStateAction, useState } from 'react';
+import { useForm } from "react-hook-form";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 interface IFormInput {
   email: string
@@ -8,11 +10,28 @@ interface IFormInput {
 }
 
 const SignInForm = () => {
-  const { register, handleSubmit, formState: { errors }, } = useForm<IFormInput>()
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
+  const router = useRouter();
+
+  const { register, handleSubmit:submitHandler, formState: { errors } } = useForm<IFormInput>()
+  const [error , setError] = useState<SetStateAction<any>>(null);
+
+  const  handleSubmit = async (data: IFormInput) => {
+    const res = await signIn('signin', {
+      ...data,
+    });
+
+    if (res?.error) {
+      setError(res.error);
+      return;
+    }
+
+    if (res && !res.error) {
+      router.push('/');
+    }
+  }
 
   return (
-    <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+    <form className="flex flex-col" onSubmit={submitHandler(handleSubmit)}>
       <label className="text-dark flex relative flex-col">
         Email
         <input
@@ -55,6 +74,13 @@ const SignInForm = () => {
           </p>
         )}
       </label>
+
+      {error && (
+        <p className=" mb-2 text-xs text-error" role="alert">
+          {error}
+        </p>
+      )}
+
       <input type="submit" value="Login" className="mt-3.5 rounded-3xl bg-black text-light py-3.5 mb-2"/>
     </form>
   );

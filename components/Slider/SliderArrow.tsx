@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 
 interface ISliderArrow {
   className: string
-  onClick: () => {}
+  onClick: () => void
 }
 
 const SliderArrow:FC<ISliderArrow> = ({ className, onClick }) => {
