@@ -9,14 +9,6 @@ interface Props {
 }
 
 const Layout:FC<Props> = ({ children }) => {
-  const router = useRouter()
-
-  const { data: session, status } = useSession();
-  console.log(session, 'as', status)
-  if (!session) {
-
-  }
-
   return  (
     <div>
       <Header/>
