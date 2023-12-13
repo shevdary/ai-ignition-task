@@ -20,7 +20,7 @@ const CustomSlider = () => {
 
   return (
     <>
-      <Slider ref={slider} {...settings} className="w-full md:px-[62px]">
+      <Slider ref={slider} {...settings} className="w-full md:py-[62px]">
         {userData.map(user=>(
           <Box className="flex flex-col justify-center text-center">
             <Avatar src={user.avatar} alt="image" className="h-[62px] w-[62px] mx-auto mb-6"/>
