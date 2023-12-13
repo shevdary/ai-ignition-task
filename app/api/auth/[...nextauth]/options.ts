@@ -16,7 +16,7 @@ export const options = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
     Credentials({
-      type: 'credentials',
+      id: 'credentials',
       credentials: {},
       async authorize(credentials: {
           firstName: string,
@@ -52,9 +52,7 @@ export const options = {
       }
     }),
     Credentials({
-      name: 'signup',
       id: 'signup',
-      type: 'signup',
       credentials: {
         firstName: {label: 'firstName', type: 'string', required: true},
         lastName: {label: 'lastName', type: 'string', required: true},
