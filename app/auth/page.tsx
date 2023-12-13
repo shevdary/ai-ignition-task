@@ -10,22 +10,26 @@ import Twitter from "../../components/Icons/Twitter";
 import Facebook from "../../components/Icons/Facebook";
 
 import '../global.css'
+import {PT_Serif} from "next/font/google";
+import className from 'classnames';
+
+const serif = PT_Serif({weight: '400', subsets: ['latin']});
 
 const SignUp = () => {
-  const handleClick = (provider: string) => () => signIn(provider, {callbackUrl: '/'})
+  const handleClick = (provider: string) => () => signIn(provider, {callbackUrl: '/'});
 
   return (
     <section className="container px-4 py-12 mx-auto flex justify-center">
       <div className={
         "bg-light overflow-hidden w-full " +
         "lg:w-9/12 flex flex-col-reverse lg:flex-row gap-x-16 " +
-        "lg:pl-6 rounded-small lg:columns-2"}
+        "lg:pl-7 rounded-small lg:columns-2"}
       >
         <div className="lg:h-full lg:w-3/5 pt-7 px-4 lg:px-0">
           <h1 className="text-title mb-3.5">Create an account</h1>
-          <p className="text-light-gray">
+          <p className={className(serif.className,"text-light-gray")}>
             Already have an account? {' '}
-            <Link href="/sign-in" className="text-dark underline underline-offset-2">
+            <Link href="auth/sign-in" className="text-dark underline underline-offset-2">
               Log in
             </Link>
           </p>
@@ -56,7 +60,7 @@ const SignUp = () => {
             <Form />
             <p className="text-xs text-center text-light-gray">
               Already have an account? {' '}
-              <Link href="sign-in" className="text-dark underline underline-offset-2">
+              <Link href="auth/sign-in" className="text-dark underline underline-offset-2">
                 Log in
               </Link>
             </p>
