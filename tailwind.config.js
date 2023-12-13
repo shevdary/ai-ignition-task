@@ -14,12 +14,14 @@ module.exports = {
       'black': '#000000',
       'divider': "rgba(76, 77, 79, 0.50)",
       "error": '#E11D48',
+      'description': '#A5A6A7',
     },
     fontSize: {
       'xs': '.75rem',
       'sm': '.875rem',
       'base': '1rem',
       'title': ['34px', '51px'],
+      'large': '40px',
     },
     borderRadius: {
       "small": '14px',
