@@ -18,10 +18,16 @@ export const options = {
     Credentials({
       type: 'credentials',
       credentials: {},
-      async authorize(credentials) {
+      async authorize(credentials: {
+          firstName: string,
+          lastName: string,
+          email: string,
+          password: string,
+          subscribe: boolean
+      }) {
         console.log(1, credentials)
 
-        const currentUser = await prisma.user.findFirst({
+        const currentUser: { email: string, password: string } = await prisma.user.findFirst({
           where: {
             email: credentials?.email,
           },
@@ -60,8 +66,14 @@ export const options = {
         password: {label: 'password', type: 'password', required: true},
         subscribe: {label: 'subscribe', type: 'boolean', required: true},
       },
-      authorize: async (credentials) => {
-        const currentUser = await prisma.user.findFirst({
+      authorize: async (credentials: {
+          firstName: string,
+          lastName: string,
+          email: string,
+          password: string,
+          subscribe: boolean
+      }) => {
+        const currentUser: { email: string }= await prisma.user.findFirst({
           where: {
             email: credentials?.email,
           },
