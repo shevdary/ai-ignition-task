@@ -1,21 +1,39 @@
-'use client'
-import React from 'react';
-import {SubmitHandler, useForm} from "react-hook-form";
+import React, {SetStateAction, useState} from 'react';
+import { useForm } from "react-hook-form";
 import Link from "next/link";
+import {signIn} from "next-auth/react";
+import {useRouter} from "next/navigation";
 interface IFormInput {
   firstName: string
   lastName: string
   email: string
   password: string
-  isSubscribe: boolean
+  subscribe: boolean
 }
 
 const SignUpFrom = () => {
-  const { register, handleSubmit, formState: { errors }, } = useForm<IFormInput>()
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
+  const router = useRouter();
+  const { register, handleSubmit:submitHandler, formState: { errors }, } = useForm<IFormInput>()
+  const [error , setError] = useState<SetStateAction<any>>(null);
+
+  const  handleSubmit = async(data: IFormInput) => {
+    const res = await signIn('signup', {
+      ...data,
+      redirect: false
+    });
+
+    if (res?.error) {
+      setError(res.error);
+      return;
+    }
+
+    if (res && !res.error) {
+      router.push('/');
+    }
+  }
 
   return (
-    <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+    <form className="flex flex-col" onSubmit={submitHandler(handleSubmit)}>
       <div className="flex flex-col sm:flex-row gap-x-8">
         <div className="sm:w-1/2">
           <label className="text-dark flex relative flex-col">
@@ -99,7 +117,7 @@ const SignUpFrom = () => {
         )}
       </label>
       <label className="mt-6 text-xs text-dark flex flex-row items-center gap-[9px]">
-        <input {...register("isSubscribe")} type="checkbox" className="w-6 h-6"/>
+        <input {...register("subscribe")} type="checkbox" className="w-6 h-6"/>
         Subscribe to our monthly newsletter
       </label>
       <p className="text-xs text-light-gray mt-6 mb-3.5">By clicking below you agree to our
@@ -111,7 +129,18 @@ const SignUpFrom = () => {
           Privacy Policy
         </Link>
       </p>
-      <input type="submit" value="Sign up" className="mt-3.5 rounded-3xl bg-black text-light py-3.5 mb-2"/>
+
+      {error && (
+        <p className=" mb-2 text-xs text-error" role="alert">
+          {error}
+        </p>
+      )}
+
+      <input
+        type="submit"
+        value="Sign up"
+        className="cursor-pointer mt-3.5 rounded-3xl bg-black text-light py-3.5 mb-2"
+      />
     </form>
   );
 };

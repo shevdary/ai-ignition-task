@@ -1,18 +1,18 @@
 'use client'
 import React from "react";
+import {signIn} from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import {signIn} from "next-auth/react";
 
-import Facebook from "../../../components/Icons/Facebook";
-import Google from "../../../components/Icons/Google";
-import Twitter from "../../../components/Icons/Twitter";
-import SignInForm from "../../../components/Form/signIn";
+import Form from "../../components/Form/signUp";
+import Google from "../../components/Icons/Google";
+import Twitter from "../../components/Icons/Twitter";
+import Facebook from "../../components/Icons/Facebook";
 
-import "../../global.css"
+import '../global.css'
 
-const SignIn = () => {
-  const handleClick = (provider: string) => () =>  signIn(provider, {callbackUrl: '/'});
+const SignUp = () => {
+  const handleClick = (provider: string) => () => signIn(provider, {callbackUrl: '/'})
 
   return (
     <section className="container px-4 py-12 mx-auto flex justify-center">
@@ -22,33 +22,29 @@ const SignIn = () => {
         "lg:pl-6 rounded-small lg:columns-2"}
       >
         <div className="lg:h-full lg:w-3/5 pt-7 px-4 lg:px-0">
-          <h1 className="text-title mb-3.5">Login</h1>
+          <h1 className="text-title mb-3.5">Create an account</h1>
           <p className="text-light-gray">
-            You don't have an account? {' '}
-            <Link href="sign-up" className="text-dark underline underline-offset-2">
-              Sign Up
+            Already have an account? {' '}
+            <Link href="/sign-in" className="text-dark underline underline-offset-2">
+              Log in
             </Link>
           </p>
           <div className="flex flex-col gap-2.5 mt-10">
-            <button
-              className="flex justify-center items-center gap-3 rounded-3xl border-[1px] py-3"
-              onClick={handleClick('facebook')}
+            <button className="flex justify-center items-center gap-3 rounded-3xl border-[1px] py-3"
+                    onClick={handleClick('facebook')}
             >
               <Facebook />
-              Sign in with Facebook</button>
+              Continue with Facebook</button>
             <button
               className="flex justify-center items-center gap-3 rounded-3xl border-[1px] py-3"
               onClick={handleClick('google')}
             >
               <Google />
-              Sign in with Google
+              Continue with Google
             </button>
-            <button
-              className="flex justify-center items-center gap-3 rounded-3xl border-[1px] py-3"
-              onClick={handleClick('twitter')}
-            >
+            <button className="flex justify-center items-center gap-3 rounded-3xl border-[1px] py-3">
               <Twitter />
-              Sign in with Twitter
+              Continue with Twitter
             </button>
           </div>
           <div className="flex items-center py-6 text-divider">
@@ -57,11 +53,11 @@ const SignIn = () => {
             <hr className="w-full h-px ml-7 border-t-0 bg-divider opacity-100 dark:opacity-50"></hr>
           </div>
           <div className="h-fit pt-3.5 pb-8">
-            <SignInForm />
+            <Form />
             <p className="text-xs text-center text-light-gray">
-              You don't have an account? {' '}
-              <Link href="/auth" className="text-dark underline underline-offset-2">
-                Sign Up
+              Already have an account? {' '}
+              <Link href="sign-in" className="text-dark underline underline-offset-2">
+                Log in
               </Link>
             </p>
           </div>
@@ -80,4 +76,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
