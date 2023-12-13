@@ -3,7 +3,7 @@ import React, { SetStateAction, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-
+import {Alert, AlertTitle} from "@mui/material";
 interface IFormInput {
   email: string
   password: string
@@ -13,11 +13,12 @@ const SignInForm = () => {
   const router = useRouter();
 
   const { register, handleSubmit:submitHandler, formState: { errors } } = useForm<IFormInput>()
-  const [error , setError] = useState<SetStateAction<any>>(null);
+  const [error , setError] = useState<SetStateAction<any>>();
 
   const  handleSubmit = async (data: IFormInput) => {
-    const res = await signIn('signin', {
+    const res = await signIn('credentials', {
       ...data,
+      redirect: false,
     });
 
     if (res?.error) {
@@ -76,9 +77,9 @@ const SignInForm = () => {
       </label>
 
       {error && (
-        <p className=" mb-2 text-xs text-error" role="alert">
-          {error}
-        </p>
+        <Alert severity="error">
+          <AlertTitle>{error}</AlertTitle>
+        </Alert>
       )}
 
       <input type="submit" value="Login" className="mt-3.5 rounded-3xl bg-black text-light py-3.5 mb-2"/>

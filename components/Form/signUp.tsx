@@ -4,6 +4,7 @@ import Link from "next/link";
 import {signIn} from "next-auth/react";
 import {useRouter} from "next/navigation";
 import {handleFont} from "../../constants/helpers";
+import {Alert, AlertTitle} from "@mui/material";
 interface IFormInput {
   firstName: string
   lastName: string
@@ -131,9 +132,9 @@ const SignUpFrom = () => {
       </p>
 
       {error && (
-        <p className=" mb-2 text-xs text-error" role="alert">
-          {error}
-        </p>
+        <Alert severity="error">
+          <AlertTitle>{error}</AlertTitle>
+        </Alert>
       )}
 
       <input
