@@ -25,7 +25,7 @@ export const options = {
           password: string,
           subscribe: boolean
       }) {
-        console.log(1, credentials)
+        console.log('credentials', credentials)
 
         const currentUser: { email: string, password: string } = await prisma.user.findFirst({
           where: {
