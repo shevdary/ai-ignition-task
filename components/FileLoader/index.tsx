@@ -1,8 +1,9 @@
 'use client';
-import React, {ChangeEvent, useState} from 'react';
-import {Box, Typography} from "@mui/material";
+import React, { ChangeEvent, useState } from 'react';
+import { Box, Typography } from "@mui/material";
 
 import LoaderIcon from "./loaderIcon";
+import { handleFont } from "../../constants/helpers";
 
 const FileLoader = () => {
   const [file, setFile] = useState<File>();
@@ -12,7 +13,7 @@ const FileLoader = () => {
   return (
     <Box className="h-full flex flex-col items-center justify-center">
       <LoaderIcon />
-      <Typography className="text-large">Upload CV</Typography>
+      <Typography className={handleFont("text-large", false)}>Upload CV</Typography>
       <Typography className="text-sm">( PDF or DOCX )</Typography>
       <input
         type="file"

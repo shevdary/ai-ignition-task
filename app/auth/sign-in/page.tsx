@@ -8,6 +8,7 @@ import Facebook from "../../../components/Icons/Facebook";
 import Google from "../../../components/Icons/Google";
 import Twitter from "../../../components/Icons/Twitter";
 import SignInForm from "../../../components/Form/signIn";
+import {handleFont} from "../../../constants/helpers";
 
 import "../../global.css"
 
@@ -19,13 +20,13 @@ const SignIn = () => {
       <div className={
         "bg-light overflow-hidden w-full " +
         "lg:w-9/12 flex flex-col-reverse lg:flex-row gap-x-16 " +
-        "lg:pl-6 rounded-small lg:columns-2"}
+        "lg:pl-7 rounded-small lg:columns-2"}
       >
         <div className="lg:h-full lg:w-3/5 pt-7 px-4 lg:px-0">
           <h1 className="text-title mb-3.5">Login</h1>
-          <p className="text-light-gray">
+          <p className={handleFont("text-light-gray", false)}>
             You don't have an account? {' '}
-            <Link href="sign-up" className="text-dark underline underline-offset-2">
+            <Link href="/auth" className="text-dark underline underline-offset-2">
               Sign Up
             </Link>
           </p>
@@ -58,7 +59,7 @@ const SignIn = () => {
           </div>
           <div className="h-fit pt-3.5 pb-8">
             <SignInForm />
-            <p className="text-xs text-center text-light-gray">
+            <p className={handleFont("text-xs text-center text-light-gray", false)}>
               You don't have an account? {' '}
               <Link href="/auth" className="text-dark underline underline-offset-2">
                 Sign Up

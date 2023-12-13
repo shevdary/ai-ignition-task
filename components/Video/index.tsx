@@ -9,7 +9,7 @@ const Video = () => (
   <Box className="w-full h-full">
     <ReactPlayer
       width="100%"
-      height="360px"
+      height="365px"
       controls={false}
       config={{
         youtube: {

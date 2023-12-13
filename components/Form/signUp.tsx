@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import {signIn} from "next-auth/react";
 import {useRouter} from "next/navigation";
+import {handleFont} from "../../constants/helpers";
 interface IFormInput {
   firstName: string
   lastName: string
@@ -10,7 +11,6 @@ interface IFormInput {
   password: string
   subscribe: boolean
 }
-
 const SignUpFrom = () => {
   const router = useRouter();
   const { register, handleSubmit:submitHandler, formState: { errors }, } = useForm<IFormInput>()
@@ -116,11 +116,11 @@ const SignUpFrom = () => {
           </p>
         )}
       </label>
-      <label className="mt-6 text-xs text-dark flex flex-row items-center gap-[9px]">
+      <label className={handleFont("mt-6 text-xs text-dark flex flex-row items-center gap-[9px]", false)}>
         <input {...register("subscribe")} type="checkbox" className="w-6 h-6"/>
         Subscribe to our monthly newsletter
       </label>
-      <p className="text-xs text-light-gray mt-6 mb-3.5">By clicking below you agree to our
+      <p className={handleFont("text-xs text-light-gray mt-6 mb-3.5", false)}>By clicking below you agree to our
         <Link href="/" className="text-dark mx-1 underline underline-offset-2">
           Terms of Service
         </Link>

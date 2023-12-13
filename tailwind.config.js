@@ -23,6 +23,7 @@ module.exports = {
       'base': '1rem',
       'title': ['34px', '51px'],
       'large': '40px',
+      'medium': ['18px', '21px']
     },
     borderRadius: {
       'small': '14px',

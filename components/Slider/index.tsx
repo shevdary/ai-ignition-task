@@ -8,6 +8,7 @@ import {userData} from "../../constants";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import {handleFont} from "../../constants/helpers";
 
 const CustomSlider = () => {
   const slider = React.useRef<any>(null);
@@ -20,12 +21,18 @@ const CustomSlider = () => {
 
   return (
     <>
-      <Slider ref={slider} {...settings} className="w-full md:py-[62px]">
+      <Slider ref={slider} {...settings} className="w-full">
         {userData.map(user=>(
           <Box className="flex flex-col justify-center text-center">
-            <Avatar src={user.avatar} alt="image" className="h-[62px] w-[62px] mx-auto mb-6"/>
-            <Typography className='mb-4'>{user.firstName} {' '} {user.lastName}</Typography>
-            <Typography className="text-description px-4 text-sm md:text-[18px]">{user.description}</Typography>
+            <Avatar src={user.avatar} alt="image" className="h-[62px] w-[62px] mx-auto mb-4"/>
+            <Typography className={handleFont('mb-2 text-[24px]', false)}>
+              {user.firstName} {' '} {user.lastName}
+            </Typography>
+            <Typography
+              className={handleFont("text-description px-6 md:px-[62px] text-sm md:text-medium")}
+            >
+              {user.description}
+            </Typography>
           </Box>
         ))}
       </Slider>
