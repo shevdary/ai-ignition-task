@@ -25,8 +25,6 @@ export const options = {
           password: string,
           subscribe: boolean
       }) {
-        console.log('credentials', credentials)
-
         const currentUser: { email: string, password: string } = await prisma.user.findFirst({
           where: {
             email: credentials?.email,
@@ -41,8 +39,6 @@ export const options = {
           credentials.password,
           currentUser.password,
         )
-
-        console.log(isValid, currentUser.password, credentials.password)
 
         if (!isValid) {
           return { error:  "Enter the correct password"}
@@ -102,7 +98,6 @@ export const options = {
   ],
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      console.log(17)
       if(user?.error) {
         throw new Error(user.error)
       }
